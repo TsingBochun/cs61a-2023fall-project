@@ -43,14 +43,18 @@ def boar_brawl(player_score, opponent_score):      # 这个函数是用来模拟
     "*** YOUR CODE HERE ***"
     text_player_score = str(player_score)            #将两者转化为字符串，好像有规则说不允许这样做，但是因为我不是零基础学起，也为了时间，所以就不考虑制约条件了
     text_opponent_score = str(opponent_score)
-    opponent_score_second_rightmost_digit = int(text_opponent_score[-2])    #-1应该是指最右边,-2应该是倒数第二个数
+    #错误处理，如果对手得分仅为个位数，即没有十位数，那么十位数为0
+    if len(text_opponent_score) == 1:
+        opponent_score_second_rightmost_digit = 0
+    else:
+        opponent_score_second_rightmost_digit = int(text_opponent_score[-2])    #-1应该是指最右边,-2应该是倒数第二个数
     player_score_rightmost_digit = int(text_player_score[-1])
     result = abs(opponent_score_second_rightmost_digit - player_score_rightmost_digit) * 3
     if result > 1:
         return result
     else:
-        return 1
-    # END PROBLEM 2
+        return 1                        #test succeeds on 2023.12.02 11:03                
+    # END PROBLEM 2                 
 
 
 def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
