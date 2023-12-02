@@ -10,18 +10,25 @@ GOAL = 100  # The goal of Hog is to score 100 points.
 ######################
 
 
-def roll_dice(num_rolls, dice=six_sided):
+def roll_dice(num_rolls, dice=six_sided):   #掷筛子函数, 我理解的是比如参数为（3， dicedice=six_sided），那么就需要在这个函数中调用三次six_sided,并且德奥最终结果要么是1，要么是求和，根据游戏规则。
     """Simulate rolling the DICE exactly NUM_ROLLS > 0 times. Return the sum of
     the outcomes unless any of the outcomes is 1. In that case, return 1.
 
-    num_rolls:  The number of dice rolls that will be made.
-    dice:       A function that simulates a single dice roll outcome.
+    num_rolls:  The number of dice rolls that will be made. 掷骰子的次数
+    dice:       A function that simulates a single dice roll outcome. 一个模拟单个掷骰子结果的函数
     """
     # These assert statements ensure that num_rolls is a positive integer.
-    assert type(num_rolls) == int, 'num_rolls must be an integer.'
+    assert type(num_rolls) == int, 'num_rolls must be an integer.'   #学习这里用断言语句来做错误处理
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
+    i = 0
+    sum = 0               
+    while i < num_rolls:
+        if dice() == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
+            return 1        #循环终止，函数直接返回1
+        sum += dice()
+        i += 1
+    return sum  
     # END PROBLEM 1
 
 
