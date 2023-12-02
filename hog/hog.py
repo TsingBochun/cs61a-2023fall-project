@@ -121,7 +121,7 @@ def sus_points(score):
             score += 1
         #return score
     return score
-    # END PROBLEM 4
+    # END PROBLEM 4        #finished on 2023.12.02 16:00
 
 def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     """Return the total score of a player who starts their turn with
@@ -129,6 +129,9 @@ def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    score = simple_update(num_rolls, player_score, opponent_score, dice=six_sided)   # 先计算不包括sus——fuss的分数
+    total_score = sus_points(score)        #再将分数用suss——fuss更新
+    return total_score
     # END PROBLEM 4
 
 
