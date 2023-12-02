@@ -101,19 +101,26 @@ def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""  # 返回计算N的约数（因子）的个数
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
-    count = 0       # 这个变量用来计算约数的个数
+    count = 0       # 这个变量用来计算约数的个数 # 这里有个错误处理没有考虑就是如果参数为0的情况下
     i = 1
     while i <= n:
         if n % i == 0:
             count += 1
         i += 1
     return count
-    # END PROBLEM 4
+    # END PROBLEM 4     #finish on 2023.12.02 15:28
 
 def sus_points(score):
     """Return the new score of a player taking into account the Sus Fuss rule."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    score_num_factors = num_factors(score)
+    if score_num_factors == 3 or score_num_factors == 4:
+        score += 1    #直接让score加上1，然后开始循环
+        while is_prime(score) != True:     # 判断该数是否为质数，如果不是就继续循环
+            score += 1
+        #return score
+    return score
     # END PROBLEM 4
 
 def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
