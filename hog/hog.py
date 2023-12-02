@@ -59,7 +59,7 @@ def boar_brawl(player_score, opponent_score):      # 这个函数是用来模拟
 
 def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     """Return the points scored on a turn rolling NUM_ROLLS dice when the
-    player has PLAYER_SCORE points and the opponent has OPPONENT_SCORE points.
+    player has PLAYER_SCORE points and the opponent has OPPONENT_SCORE points.   #这一个函数我确实没太理解 返回的分数貌似是当前投筛子的玩家的分数 然后就是把以上规则都使用的函数
 
     num_rolls:       The number of dice rolls that will be made.
     player_score:    The total score of the current player.
@@ -72,6 +72,10 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if num_rolls == 0:        # 玩家选择投0筛子即不投
+        return boar_brawl(player_score, opponent_score)     # 直接调用野猪乱斗的规则
+    else:
+        return roll_dice(num_rolls, dice=six_sided)    # 直接调用正常规则
     # END PROBLEM 3
 
 
