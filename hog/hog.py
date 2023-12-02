@@ -132,7 +132,7 @@ def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     score = simple_update(num_rolls, player_score, opponent_score, dice=six_sided)   # 先计算不包括sus——fuss的分数
     total_score = sus_points(score)        #再将分数用suss——fuss更新
     return total_score
-    # END PROBLEM 4
+    # END PROBLEM 4    # finish on 2023.12.02 16:12
 
 
 def always_roll_5(score, opponent_score):
@@ -171,8 +171,25 @@ def play(strategy0, strategy1, update,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    #sus_update(, player_score, opponent_score, dice=six_sided)   sus_update函数的原型
+    #score0 = update(strategy0, score0=0, score1=0, dice=six_sided)    # 初始化score0的值，假设player0先投
+    #score1 = update(strategy1, score1=0, score0, dice=six_sided)      # 这个时候score0已经有值了
+    # only for debug:
+    #strategy0 = 5
+    #strategy1 = 5
+
+    while score0 < goal and score1 < goal:        # 两者的得分都小于目标即没有人达到目标
+        if who == 0:
+            #score0 = update(strategy0, score0, score1, dice=six_sided)
+            score0 = update(strategy0(score0, score1), score0, score1, dice=six_sided)
+            who = 1 - who
+        elif who == 1:
+            #score1 = update(strategy1, score1, score0, dice=six_sided)
+            score1 = update(strategy1(score1, score0), score1, score0, dice=six_sided)
+            who = 1 - who
+    return score0, score1        # finish on 2023.12.02  17:13
     # END PROBLEM 5
-    return score0, score1
+    
 
 
 #######################
