@@ -213,7 +213,7 @@ def always_roll(n):
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
-    return n
+    return n        # finish on 2023.12.02  
     # END PROBLEM 6
 
 
@@ -244,7 +244,8 @@ def is_always_roll(strategy, goal=GOAL):
     False
     """
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
+    "*** YOUR CODE HERE ***"       # 没理解这个题目到底什么意思，暂时性的跳过
+
     # END PROBLEM 7
 
 
