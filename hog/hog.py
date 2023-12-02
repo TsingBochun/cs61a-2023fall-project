@@ -76,7 +76,7 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
         return boar_brawl(player_score, opponent_score)     # 直接调用野猪乱斗的规则
     else:
         return roll_dice(num_rolls, dice=six_sided)    # 直接调用正常规则
-    # END PROBLEM 3
+    # END PROBLEM 3     #test succeeds on 2023.12.02 11:35
 
 
 def simple_update(num_rolls, player_score, opponent_score, dice=six_sided):
@@ -98,9 +98,16 @@ def is_prime(n):
     return True
 
 def num_factors(n):
-    """Return the number of factors of N, including 1 and N itself."""
+    """Return the number of factors of N, including 1 and N itself."""  # 返回计算N的约数（因子）的个数
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    count = 0       # 这个变量用来计算约数的个数
+    i = 1
+    while i <= n:
+        if n % i == 0:
+            count += 1
+        i += 1
+    return count
     # END PROBLEM 4
 
 def sus_points(score):
