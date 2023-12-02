@@ -21,26 +21,35 @@ def roll_dice(num_rolls, dice=six_sided):   #掷筛子函数, 我理解的是比
     assert type(num_rolls) == int, 'num_rolls must be an integer.'   #学习这里用断言语句来做错误处理
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    i = 0
-    sum = 0               
+    i, sum = 0, 0
+    #sum = 0               
     while i < num_rolls:
         if dice() == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
             return 1        #循环终止，函数直接返回1
         sum += dice()
         i += 1
     return sum  
-    # END PROBLEM 1
+    # END PROBLEM 1     #test succeeds on 2023.12.02 10:22
 
 
-def boar_brawl(player_score, opponent_score):
-    """Return the points scored by rolling 0 dice according to Boar Brawl.
+def boar_brawl(player_score, opponent_score):      # 这个函数是用来模拟野猪斗殴规则的
+    """Return the points scored by rolling 0 dice according to Boar Brawl. 返回不投(0投掷)时的根据野猪斗殴规则得到的分数
 
-    player_score:     The total score of the current player.
-    opponent_score:   The total score of the other player.
+    player_score:     The total score of the current player.   当前得分
+    opponent_score:   The total score of the other player.     对手得分
 
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    text_player_score = str(player_score)            #将两者转化为字符串，好像有规则说不允许这样做，但是因为我不是零基础学起，也为了时间，所以就不考虑制约条件了
+    text_opponent_score = str(opponent_score)
+    opponent_score_second_rightmost_digit = int(text_opponent_score[-2])    #-1应该是指最右边,-2应该是倒数第二个数
+    player_score_rightmost_digit = int(text_player_score[-1])
+    result = abs(opponent_score_second_rightmost_digit - player_score_rightmost_digit) * 3
+    if result > 1:
+        return result
+    else:
+        return 1
     # END PROBLEM 2
 
 
