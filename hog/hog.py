@@ -21,13 +21,17 @@ def roll_dice(num_rolls, dice=six_sided):   #掷筛子函数, 我理解的是比
     assert type(num_rolls) == int, 'num_rolls must be an integer.'   #学习这里用断言语句来做错误处理
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    i, sum = 0, 0
-    #sum = 0               
-    while i < num_rolls:
-        if dice() == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
-            return 1        #循环终止，函数直接返回1
-        sum += dice()
-        i += 1
+    #i = 0
+    sum = 0               
+    #while i < num_rolls:
+    #    if dice() == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
+    #        return 1        #循环终止，函数直接返回1
+    #    sum += dice()
+    #    i += 1
+    for i in range(num_rolls):
+        print(dice())        #only for debug
+        sum += dice()        # only for debug
+    print(sum)
     return sum  
     # END PROBLEM 1     #test succeeds on 2023.12.02 10:22
 
