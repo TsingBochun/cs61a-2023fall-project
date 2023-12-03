@@ -248,7 +248,14 @@ def is_always_roll(strategy, goal=GOAL):
     """
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"       # 没理解这个题目到底什么意思，暂时性的跳过
-
+    sum = 0                               # 最后我才想明白，原来问题不是任取两个函数的返回值进行比较，看是否相当
+    for x in range(goal):                 # 而是看函数的返回值是否始终为常数，这大概是我第一次做的算法题，CS50中也并未涉及
+        for y in range(goal):
+            sum += strategy(x, y)
+    if sum == 10000 * strategy(0, 0):
+        return True    
+    else:
+        return False           # finish on 2023.12.03 10:11
     # END PROBLEM 7
 
 
