@@ -28,7 +28,7 @@ def roll_dice(num_rolls, dice=six_sided):   #掷筛子函数, 我理解的是比
         tmp = dice()
         #print(tmp)     # only for debug
         if tmp == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
-            print("the dice is 1")
+            #print("the dice is 1")     #only for debug
             #print(dice())   # only for debug     #这里其实又调用了dice，所以dice为1 的时候并没有退出
             sum = tmp
             break        #循环终止，函数直接返回1
