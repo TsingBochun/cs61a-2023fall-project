@@ -308,18 +308,31 @@ def max_scoring_num_rolls(dice=six_sided, samples_count=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
-    average_dice = make_averaged(dice, samples_count)        
+    #average_dice = make_averaged(dice, samples_count)        
+    #max_average = 0
+    #number_of_rolls = 0
+    #for i in range(1, 11):
+    #    cur_average = average_dice(i, dice)
+    ##    if cur_average > max_average:
+    #        max_average = cur_average
+    #        number_of_rolls = i
+    #return number_of_rolls             # 这里没有做比较大小？这里我还是没有充分理解题目，暂时借用别人的代码看看效果 2023.12。03  15:32
+    # 测试报故，我觉得此人的代码有误，因为提示中说是要用到make——average和roll——dice两个函数，她却没有用，肯定有问题
+    # END PROBLEM 9
+    #for i in range(1, 11):     # 相当于 i 从 1 到 10
+    #def roll_dice(num_rolls, dice=six_sided)   roll_dice()函数原型
+    #average_of_roll_dice = make_averaged(roll_dice, samples_count=1000)    # 求roll_dice 1000次的平均值
+    # 然后是 roll——dice里面的dice是从1到10
+    average_of_roll_dice = make_averaged(roll_dice, samples_count=1000)
     max_average = 0
     number_of_rolls = 0
     for i in range(1, 11):
-        cur_average = average_dice(i, dice)
-        if cur_average > max_average:
-            max_average = cur_average
+        temp = average_of_roll_dice(i, dice)
+        if temp > max_average:
+            max_average = temp
             number_of_rolls = i
-    return number_of_rolls             # 这里没有做比较大小？这里我还是没有充分理解题目，暂时借用别人的代码看看效果 2023.12。03  15:32
-    # 测试报故，我觉得此人的代码有误，因为提示中说是要用到make——average和roll——dice两个函数，她却没有用，肯定有问题
+    return number_of_rolls
     # END PROBLEM 9
-
 
 def winner(strategy0, strategy1):
     """Return 0 if strategy0 wins against strategy1, and 1 otherwise."""
