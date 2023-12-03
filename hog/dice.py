@@ -20,14 +20,14 @@ def make_fair_dice(sides):
     """Return a die that returns 1 to SIDES with equal chance."""
     assert type(sides) == int and sides >= 1, 'Illegal value for sides'
     def dice():
-        return randint(1,sides)         # 我的理解这里返回一个1到sides之间的随机数？那么整个函数返回一个1到sides之间的随机数？
-    return dice
+        return randint(1,sides)         # 我的理解这里返回一个1到sides之间的随机数.那么整个函数返回一个1到sides之间的随机数.
+    return dice                         # 这里定义了一个函数 dice，这个make fairdice的 dice 就是1到sides面 之间的随机数
 
 four_sided = make_fair_dice(4)
 six_sided = make_fair_dice(6)
 
 def make_test_dice(*outcomes):
-    """Return a die that cycles deterministically through OUTCOMES.
+    """Return a die that cycles deterministically through OUTCOMES.     # 这里产生一个dice函数, 是按照参数的顺序依次生成返回值
 
     >>> dice = make_test_dice(1, 2, 3)
     >>> dice()

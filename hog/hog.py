@@ -285,6 +285,7 @@ def make_averaged(original_function, samples_count=1000):
 def max_scoring_num_rolls(dice=six_sided, samples_count=1000):
     """Return the number of dice (1 to 10) that gives the highest average turn score
     by calling roll_dice with the provided DICE a total of SAMPLES_COUNT times.
+    通过使用提供的dice调用roll_dice总共SAMPLES_COUNT次,返回平均回合得分最高的骰子数(1到10)。   
     Assume that the dice always return positive outcomes.
 
     >>> dice = make_test_dice(1, 6)
@@ -293,6 +294,16 @@ def max_scoring_num_rolls(dice=six_sided, samples_count=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    average_dice = make_averaged(dice, samples_count)        
+    max_average = 0
+    number_of_rolls = 0
+    for i in range(1, 11):
+        cur_average = average_dice(i, dice)
+        if cur_average > max_average:
+            max_average = cur_average
+            number_of_rolls = i
+    return number_of_rolls             # 这里没有做比较大小？这里我还是没有充分理解题目，暂时借用别人的代码看看效果 2023.12。03  15:32
+    # 测试报故，我觉得此人的代码有误，因为提示中说是要用到make——average和roll——dice两个函数，她却没有用，肯定有问题
     # END PROBLEM 9
 
 
@@ -337,8 +348,12 @@ def boar_strategy(score, opponent_score, threshold=11, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Sus Fuss.
     """
     # BEGIN PROBLEM 10
-    return num_rolls  # Remove this line once implemented.
-    # END PROBLEM 10
+    # return num_rolls  # Remove this line once implemented.
+    if boar_brawl(score, opponent_score) == threshold:
+        return 0
+    else:
+        return num_rolls      
+    # END PROBLEM 10       # finished on 2023.12.03 16:42
 
 
 def sus_strategy(score, opponent_score, threshold=11, num_rolls=6):
