@@ -272,6 +272,13 @@ def make_averaged(original_function, samples_count=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def original_function_average(*args):
+        sum = 0
+        for i in range(samples_count):
+            sum += original_function(*args)
+        average = sum / samples_count    
+        return average
+    return original_function_average       #测试用例答案为3.0，但是我做出来是1.5，暂时看不出错在哪里，先提交
     # END PROBLEM 8
 
 
