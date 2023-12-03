@@ -213,7 +213,10 @@ def always_roll(n):
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
-    return n        # finish on 2023.12.02  
+    # return n        # finish on 2023.12.02
+    def strategy(currenrt_player_score, opponet_player_score):
+        return n                      
+    return strategy     # changed on 2023.12.03 09:09
     # END PROBLEM 6
 
 
