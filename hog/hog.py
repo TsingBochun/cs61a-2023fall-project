@@ -11,6 +11,7 @@ GOAL = 100  # The goal of Hog is to score 100 points.
 
 
 def roll_dice(num_rolls, dice=six_sided):   #掷筛子函数, 我理解的是比如参数为（3， dicedice=six_sided），那么就需要在这个函数中调用三次six_sided,并且德奥最终结果要么是1，要么是求和，根据游戏规则。
+# def roll_dice(num_rolls, dice=six_sided):  # 原函数的写法
     """Simulate rolling the DICE exactly NUM_ROLLS > 0 times. Return the sum of
     the outcomes unless any of the outcomes is 1. In that case, return 1.
 
@@ -21,17 +22,23 @@ def roll_dice(num_rolls, dice=six_sided):   #掷筛子函数, 我理解的是比
     assert type(num_rolls) == int, 'num_rolls must be an integer.'   #学习这里用断言语句来做错误处理
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    #i = 0
+    i = 0
     sum = 0               
-    #while i < num_rolls:
-    #    if dice() == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
-    #        return 1        #循环终止，函数直接返回1
-    #    sum += dice()
-    #    i += 1
-    for i in range(num_rolls):
-        print(dice())        #only for debug
-        sum += dice()        # only for debug
-    print(sum)
+    while i < num_rolls:
+        if dice() == 1:    #如果在循环的过程中，随机数dice出现等于1的情况
+            print("the dice is 1")
+            #print(dice())   # only for debug     #这里其实又调用了dice，所以dice为1 的时候并没有退出
+            sum = 1
+            break        #循环终止，函数直接返回1
+        sum += dice()
+        print(dice())      # only for debug
+        i += 1
+    #for i in range(num_rolls):
+    #    print(dice())        #only for debug
+    #    print(i)             #only for debugs
+    #    print(sum)
+    #    sum += dice()        # only for debug      #因为这里再一次地调用了dice，所以dice此时变成了2，sum+=后编程了2，但是这个BUG对于六面筛子来说不应该存在 
+    #    print(sum)       
     return sum  
     # END PROBLEM 1     #test succeeds on 2023.12.02 10:22
 
