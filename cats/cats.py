@@ -14,7 +14,7 @@ def pick(paragraphs, select, k):
     """Return the Kth paragraph from PARAGRAPHS for which SELECT called on the
     paragraph returns True. If there are fewer than K such paragraphs, return
     the empty string.    # 这个题的意思是说, 将参数段落中所有满足selet条件的段落找出来, 组成一个新的list, 然后返回新段落中的第k个元素,如果K大于组成新段落的长度, 则返回空字符串
-
+                         # 这里面属于有个问题,就是说PARAGRAPHS是代表了存储字符串的列表,而paragraphs仅仅只是PARAGRAPHS中的字符串
     Arguments:
         paragraphs: a list of strings        # 一个都是字符串的的列表
         select: a function that returns True for paragraphs that can be selected    # 一个函数, 返回真. 如果这个段落可以被选择(我理解的是相当于一个选择段落的条件)
@@ -41,16 +41,17 @@ def pick(paragraphs, select, k):
             list.append(paragraphs[index])
             # print(list)    # only for debug
     if k > len(list) - 1:
+        # print("k is too large!") # only for debug
         return ''
     else:
-        return list[k]
-    # END PROBLEM 1
+        return list[k]     
+    # END PROBLEM 1           # PROBLEM 1 finish
 
 
 def about(subject):
     """Return a select function that returns whether
-    a paragraph contains one of the words in SUBJECT.
-
+    a paragraph contains one of the words in SUBJECT.    # 它返回一个函数，该函数接受一个段落并返回一个布尔值，指示该段落是否包含主题中的任何单词。
+                                                         # 这里面的 paragraph 术语是说大的PARAGRAPHS中的字符串
     Arguments:
         subject: a list of words related to a subject
 
@@ -63,7 +64,58 @@ def about(subject):
     assert all([lower(x) == x for x in subject]), 'subjects should be lowercase.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def myfunction(paragraph):
+        #for text in paragraph:
+        #    list = split(text)
+        #    for element in list:
+        #        if remove_punctuation(element) in subject:
+        #            print(text)     # only for debug
+        #            return True
+        list = split(paragraph)    # 首先将字符串转换成列表，每个元素是一个单词包括标点
+        for element in list:     # 遍历列表
+            word = lower(remove_punctuation(element))  # 将list中的元素去除标点得到单词, 然后再小写化，得到最终单词
+            if word in subject:
+                # print(word)       # only for debug
+                return True
+        return False
+
+    return myfunction
     # END PROBLEM 2
+
+#临时区域，用来写一个函数作为测试用
+
+def check(paragraph,  subject):  # 写一个函数，输入是段落，和主题词，如果段落中有含有subject中的单词，则返回true以及段落中的单词
+#    for x in paragraph:
+#        for y in subject:
+            #if y in list(x):
+#            if y in split(x):
+#                print(x)
+#                return True
+#            return False
+    for string in paragraph:
+        #print(string)  # only for debug
+        #print(type(string))
+        list = split(string)
+        #print(list)     # only for debug
+        for element in list:
+        #for element in subject:
+            #if element in list:
+            if remove_punctuation(element) in subject:             # 如果去掉标点之后的元素，在subject中可以找到
+            #    print(element)     # only for debug
+                #print(remove_punctuation(element))      # only for debug   打印去掉标点之后的元素
+                #print(list)
+                print(string)
+                #return True
+            #print(element)        # only for debug
+    #return False
+# subject = ['dog', 'dogs', 'pup', 'puppy', 'cat']
+# subject = ['dog', 'dogs', 'cat']
+# paragraph = ['Cute dog!', 'That is a cat.', 'Nice pup!']
+# paragraph = ['Cute dog', 'That is a cat', 'Nice pup!']
+# paragraph = ['Cute', 'That is a cat', 'Nice pup!']
+# paragraph = 'Cute dog!'
+# check(paragraph, subject)
+#临时区域结束
 
 
 def accuracy(typed, source):
