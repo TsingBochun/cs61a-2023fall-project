@@ -9,28 +9,41 @@ from datetime import datetime
 # Phase 1 #
 ###########
 
-
+# Problem 1 
 def pick(paragraphs, select, k):
     """Return the Kth paragraph from PARAGRAPHS for which SELECT called on the
     paragraph returns True. If there are fewer than K such paragraphs, return
-    the empty string.
+    the empty string.    # 这个题的意思是说, 将参数段落中所有满足selet条件的段落找出来, 组成一个新的list, 然后返回新段落中的第k个元素,如果K大于组成新段落的长度, 则返回空字符串
 
     Arguments:
-        paragraphs: a list of strings
-        select: a function that returns True for paragraphs that can be selected
-        k: an integer
+        paragraphs: a list of strings        # 一个都是字符串的的列表
+        select: a function that returns True for paragraphs that can be selected    # 一个函数, 返回真. 如果这个段落可以被选择(我理解的是相当于一个选择段落的条件)
+        k: an integer           # 一个整数
 
-    >>> ps = ['hi', 'how are you', 'fine']
-    >>> s = lambda p: len(p) <= 4
-    >>> pick(ps, s, 0)
-    'hi'
+    >>> ps = ['hi', 'how are you', 'fine']     # 一个都是字符串的列表
+    >>> s = lambda p: len(p) <= 4             # 判断字符串是否满足长度小于等于4的条件, 如果满足返回true, 
+    >>> pick(ps, s, 0)              # PS这个段落中, 判断第0个元素, 是否满足S的条件, 如果满足就PICK, 如果不满足就返回空集
+    'hi'                        # PS的第0个元素,满足长度小于等于4这个条件,所以就返回
     >>> pick(ps, s, 1)
     'fine'
-    >>> pick(ps, s, 2)
+    >>> pick(ps, s, 2)      
     ''
     """
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    #if select(paragraphs[k]) == True:
+    #    return paragraphs[k]
+    #else:
+    #    return ''
+    list = []
+    for index in range(len(paragraphs)):
+        if select(paragraphs[index]) == True:
+            list.append(paragraphs[index])
+            # print(list)    # only for debug
+    if k > len(list) - 1:
+        return ''
+    else:
+        return list[k]
     # END PROBLEM 1
 
 
