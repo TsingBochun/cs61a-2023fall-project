@@ -161,15 +161,15 @@ def accuracy(typed, source):
          #   break
         result = float( count / len(typed_words) * 100)
         return result
-    # END PROBLEM 3
+    # END PROBLEM 3                # PROBLEM 3 finish
 
 
 def wpm(typed, elapsed):
     """Return the words-per-minute (WPM) of the TYPED string.
 
     Arguments:
-        typed: an entered string
-        elapsed: an amount of time in seconds
+        typed: an entered string                     # 官方的文档里是说WPM计算不是用多少个字,而是总共多少个字符再除以5
+        elapsed: an amount of time in seconds        # WPM 的M是分钟的意思,这里的参数都是秒, 要换算
 
     >>> wpm('hello friend hello buddy hello', 15)
     24.0
@@ -179,7 +179,15 @@ def wpm(typed, elapsed):
     assert elapsed > 0, 'Elapsed time must be positive'
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
-    # END PROBLEM 4
+    result = 0
+    total = len(typed) / 5      # 先找到一共打了多少字符，并除以5
+    minutes = float(elapsed / 60)
+    result = float(total / minutes)
+    return result 
+    # END PROBLEM 4    # PROBLEM 4 finished
+             
+    
+
 
 
 ############
