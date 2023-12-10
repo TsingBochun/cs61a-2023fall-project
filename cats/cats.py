@@ -80,7 +80,7 @@ def about(subject):
         return False
 
     return myfunction
-    # END PROBLEM 2
+    # END PROBLEM 2                # END PROBLEM 2 finished
 
 #临时区域，用来写一个函数作为测试用
 
@@ -145,6 +145,22 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if (typed == '' and source != '') or (typed != '' and source == ''):
+        return float(0)
+    elif typed == '' and source == '':
+        return float(100)
+    else:
+        result = 0
+        count = 0
+        for i in range(len(typed_words)):
+            if i >= len(source_words):
+                break
+            elif typed_words[i] == source_words[i]:
+                count += 1
+        #elif i >= len(source_words):
+         #   break
+        result = float( count / len(typed_words) * 100)
+        return result
     # END PROBLEM 3
 
 
