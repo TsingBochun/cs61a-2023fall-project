@@ -380,9 +380,9 @@ def report_progress(typed, source, user_id, upload):
     }
     upload(dict) 
     return progress
-    # END PROBLEM 8
+    # END PROBLEM 8       # PROBLEM 8 finished
 
-
+# 第九题和第十题用到了“DATA ABSTRACTION”的概念，是后面要学习的内容，暂时性跳过
 def time_per_word(words, timestamps_per_player):
     """Given timing data, return a match data abstraction, which contains a
     list of words and the amount of time each player took to type each word.
