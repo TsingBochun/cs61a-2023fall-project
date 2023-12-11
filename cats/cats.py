@@ -294,23 +294,38 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, 'Remove this line'
-    if ___________: # Base cases should go here, you may add more base cases as needed.
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    #assert False, 'Remove this line'
+    #if ___________: # Base cases should go here, you may add more base cases as needed.
+    #    # BEGIN
+    #    "*** YOUR CODE HERE ***"
+    #    # END
     # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    else:
-        add = ... # Fill in these lines
-        remove = ...
-        substitute = ...
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    #if ___________: # Feel free to remove or add additional cases
+    #    # BEGIN
+    #    "*** YOUR CODE HERE ***"
+    #    # END
+    #else:
+    #    add = ... # Fill in these lines
+    #    remove = ...
+    #    substitute = ...
+    #    # BEGIN
+    #    "*** YOUR CODE HERE ***"
+    #    # END
+    ## 上面给出的模板全部不看
+    
+##练习区域：    
+##首先我要写一个函数，找到cats和scat中重合的部分
+def find_common(string1, string2):
+    list = []    #建立一个空列表
+    for s1_index in range(len(string1)):
+        for s2_index in range(len(string2)):
+            if string1[s1_index] == string2[s1_index]:
+                
+    
+        
+        
+
+
 
 
 def final_diff(typed, source, limit):
