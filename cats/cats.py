@@ -278,7 +278,7 @@ def feline_fixes(typed, source, limit):
 # Phase 2B #
 ############
 
-
+# Problem 7 (3 pts)
 def minimum_mewtations(typed, source, limit):
     """A diff function that computes the edit distance from TYPED to SOURCE.
     This function takes in a string TYPED, a string SOURCE, and a number LIMIT.
@@ -315,12 +315,11 @@ def minimum_mewtations(typed, source, limit):
     
 ##练习区域：    
 ##首先我要写一个函数，找到cats和scat中重合的部分
-def find_common(string1, string2):
-    list = []    #建立一个空列表
-    for s1_index in range(len(string1)):
-        for s2_index in range(len(string2)):
-            if string1[s1_index] == string2[s1_index]:
-                
+#def find_common(string1, string2):
+#    list = []    #建立一个空列表
+#    for s1_index in range(len(string1)):
+##            if string1[s1_index] == string2[s1_index]:         # Problem 7 finished
+
     
         
         
@@ -366,6 +365,21 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    #get the progress so far
+    count = 0
+    for index in range(len(typed)):
+        if typed[index] == source[index]:
+            count += 1
+        elif typed[index] != source[index]:
+            break
+    progress = float(count / len(source))
+    # upload id and progress
+    dict = {
+        'id': user_id, 
+        'progress': progress
+    }
+    upload(dict) 
+    return progress
     # END PROBLEM 8
 
 
