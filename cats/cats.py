@@ -202,13 +202,13 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     difference is greater than LIMIT, instead return TYPED_WORD.
 
     Arguments:
-        typed_word: a string representing a word that may contain typos
-        word_list: a list of strings representing source words
-        diff_function: a function quantifying the difference between two words
-        limit: a number
+        typed_word: a string representing a word that may contain typos  # 一个字符串代表了一个单词里面可能包括了错误的拼写
+        word_list: a list of strings representing source words          # 一个清单,元素都是字符串 代表了源单词
+        diff_function: a function quantifying the difference between two words    # 一个函数确定两个单词之间的差异
+        limit: a number            # 一个数字
 
-    >>> ten_diff = lambda w1, w2, limit: 10 # Always returns 10
-    >>> autocorrect("hwllo", ["butter", "hello", "potato"], ten_diff, 20)
+    >>> ten_diff = lambda w1, w2, limit: 10 # Always returns 10         # 差异始终为10
+    >>> autocorrect("hwllo", ["butter", "hello", "potato"], ten_diff, 20)      # hwllo与["butter", "hello", "potato"]中的所有项差异都为10, 小于20,返回第一个元素
     'butter'
     >>> first_diff = lambda w1, w2, limit: (1 if w1[0] != w2[0] else 0) # Checks for matching first char
     >>> autocorrect("tosting", ["testing", "asking", "fasting"], first_diff, 10)
@@ -216,6 +216,23 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    # 计算输入单词和单词列表的所有的差异difference，存进一个新的list，
+    # 将这个list中最小的项对应的元素位置在 word_list 中找到返回即可，如果最小的这个值也大于limit返回元单词即可
+    dif_list = []
+    for element in word_list:
+        difference = diff_function(typed_word, element, limit)   # 得到输入单词和每一个单词之间的差异
+        dif_list.append(difference)             # 将所有差异存入列表
+    min_dif = min(dif_list, key = abs)      # 找到差异最小的首个元素
+    if min_dif > limit:     # 如果最小差异值比限制条件要大
+        return typed_word     # 无法自动纠错，
+    else: 
+        for index in range(len(dif_list)):
+            if dif_list[index] == min_dif:
+                return word_list[index]
+            
+
+
+
     # END PROBLEM 5
 
 
