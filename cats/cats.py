@@ -228,11 +228,7 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     else: 
         for index in range(len(dif_list)):
             if dif_list[index] == min_dif:
-                return word_list[index]
-            
-
-
-
+                return word_list[index]           # END PROBLEM 5 finished
     # END PROBLEM 5
 
 
@@ -244,7 +240,7 @@ def feline_fixes(typed, source, limit):
     Arguments:
         typed: a starting word
         source: a string representing a desired goal word
-        limit: a number representing an upper bound on the number of chars that must change
+        limit: a number representing an upper bound on the number of chars that must change    # 这个LIMIT参数有什么实际作用,我暂时没看明白
 
     >>> big_limit = 10
     >>> feline_fixes("nice", "rice", big_limit)    # Substitute: n -> r
@@ -259,8 +255,23 @@ def feline_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
-    # END PROBLEM 6
+    #assert False, 'Remove this line'        # 另外这道题要求用递归解决, 我暂时用迭代解决
+    result = 0
+    count = 0
+    # 先得到两者共同长度的部分
+    length = min(len(typed), len(source))
+    # 对于共同长度的部分，先进行比较
+    for i in range(length):
+        if typed[i] != source[i]:
+            count += 1
+    # 最后再加上多出的部分
+    result = max(len(typed), len(source)) - length + count
+    return result
+    # END PROBLEM 6         END PROBLEM 6 finished
+    
+
+
+
 
 
 ############
