@@ -305,20 +305,21 @@ def minimum_mewtations(typed, source, limit):
     #    "*** YOUR CODE HERE ***"
     #    # END
     #else:
-    #    add = ... # Fill in these lines
-    #    remove = ...
-    #    substitute = ...
+    #    add = ... # Fill in these lines      # 在单词最前面/或者最后面加叫做add
+    #    remove = ...                         # 在单词最前面/或者最后面去掉叫做remove
+    #    substitute = ...                     # 原位置不变，叫做替换
     #    # BEGIN
     #    "*** YOUR CODE HERE ***"
     #    # END
     ## 上面给出的模板全部不看
-    
-##练习区域：    
-##首先我要写一个函数，找到cats和scat中重合的部分
-#def find_common(string1, string2):
-#    list = []    #建立一个空列表
-#    for s1_index in range(len(string1)):
-##            if string1[s1_index] == string2[s1_index]:         # Problem 7 finished
+    #list = []     # 用一个列表来存储比较结果的大小
+########problem7 练习区域#######
+def change(typed, source):    # 先找到相同的连续部分
+    Start = 0        # 用来存储起始位置
+    for i in range(len(source)):
+        for k in range(len(typed)):
+            if typed[k] == source[i]
+
 
     
         
@@ -382,7 +383,7 @@ def report_progress(typed, source, user_id, upload):
     return progress
     # END PROBLEM 8       # PROBLEM 8 finished
 
-# 第九题和第十题用到了“DATA ABSTRACTION”的概念，是后面要学习的内容，暂时性跳过
+# 第九题和第十题用到了“DATA ABSTRACTION”的概念，是后面要学习的内容，暂时性跳过，回到problem 8
 def time_per_word(words, timestamps_per_player):
     """Given timing data, return a match data abstraction, which contains a
     list of words and the amount of time each player took to type each word.
