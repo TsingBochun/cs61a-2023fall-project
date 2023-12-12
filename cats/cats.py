@@ -314,11 +314,11 @@ def minimum_mewtations(typed, source, limit):
     ## 上面给出的模板全部不看
     #list = []     # 用一个列表来存储比较结果的大小
 ########problem7 练习区域#######
-def change(typed, source):    # 先找到相同的连续部分
-    Start = 0        # 用来存储起始位置
-    for i in range(len(source)):
-        for k in range(len(typed)):
-            if typed[k] == source[i]
+#def change(typed, source):    # 先找到相同的连续部分
+#    Start = 0        # 用来存储起始位置
+#    for i in range(len(source)):
+#        for k in range(len(typed)):
+#            if typed[k] == source[i] # ⭐️写到这里
 
 
     
@@ -402,7 +402,22 @@ def time_per_word(words, timestamps_per_player):
     [[6, 3, 6, 2], [10, 6, 1, 2]]
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
+    "*** YOUR CODE HERE ***"        # 暂时不用match()实现此函数
+    # 只需要做一个转换程序将，将时间戳转换成时间消耗即可:转换以后也是存入一个列表的列表time_list_list，一层表格用time_list表示
+    #timelist_list = [[0, 0, 0, 0], [0, 0, 0, 0]]
+    #timelist_list = [[]]
+    #time_list = []
+    k = len(timestamps_per_player)    # 得到要改变的数组的长度, 外部列表的长度
+    #print("k: ", k)        # only for debug
+    l = len(timestamps_per_player[0]) # 得到内部数组的长度
+    #print("l: ", l)         # only for debug
+    timelist_list = [[0] * (l-1) for i in range(k)]
+    #i, j = 0, 0
+    for i in range(k):
+        for j in range(l-1):      # 倒数第二个元素
+            timelist_list[i][j] = timestamps_per_player[i][j+1] - timestamps_per_player[i][j]
+    #print(timelist_list)    # only for debug
+    return match(words, timelist_list)
     # END PROBLEM 9
 
 
