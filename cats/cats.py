@@ -418,10 +418,10 @@ def time_per_word(words, timestamps_per_player):
             timelist_list[i][j] = timestamps_per_player[i][j+1] - timestamps_per_player[i][j]
     #print(timelist_list)    # only for debug
     return match(words, timelist_list)
-    # END PROBLEM 9
+    # END PROBLEM 9           # PROBLEM 9 finished
 
 
-def fastest_words(match):
+def fastest_words(match):                                     # 这里是把函数作为参数使用？
     """Return a list of lists of which words each player typed fastest.
 
     Arguments:
@@ -436,14 +436,58 @@ def fastest_words(match):
     >>> p1
     [4, 1, 6]
     """
-    player_indices = range(len(get_all_times(match)))  # contains an *index* for each player
+    player_indices = range(len(get_all_times(match)))  # contains an *index* for each player    
     word_indices = range(len(get_all_words(match)))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    ex_match = match  #得到字典
+    words_list = ex_match['words']         # 得到单词的列表, 应该作为列的参数
+    timeslist_list = ex_match["times"]     # 得到时间列表的列表， 应该作为行的参数
+    tmp = 0                                # 用来保存最小的time的临时变量
+    list = [0 for i in range(len(words_list))]    # 用来存储每个colum的最小值, 先全部初始化为0
+    #tmp = [0 for i in player_indices]     
+    #for j in player_indices:
+    #print(len(timeslist_list))# only for debug
+    # 根据最小项list得到每个最小项的player列表：
+    playernumber_list = []
+    for j in range(len(words_list)):
+        for i in range(len(timeslist_list)-1):    # 这里应该是用户数
+        #for i in range(2-1):          # 这里我的测试用例暂时是两个
+            if timeslist_list[i][j] <= timeslist_list[i+1][j]:
+                tmp = timeslist_list[i][j]
+                playernumber_list.append(i)
+            else:
+                tmp = timeslist_list[i+1][j]
+                playernumber_list.append(i+1)
+        list[j] = tmp        # 得到每个最小项的LIST
+        #playernumber_list.append(i)   # 得到对应的行数
+    # 根据最小项list得到每个最小项的player列表：
+    #playernumber_list = []
+        #list.append(tmp)
+    #for i in 
+    #print(type(timeslist_list))        # only for debug
+    
+    #return words_list, timeslist_list  # only for debug
+    #return list
+    # 计算得到用户数量：
+    player_counts = max(playernumber_list) + 1
+    result_list = [0 for i in range(player_counts)]    # 进行初始化全部为0
+    #result_list = [[]] 
+    for i in range(player_counts):
+        #result_list[i] = [ for i in range(len(words_list)) if playernumber_list[i] == i]
+        result_list[i] = [x for x in words_list if playernumber_list[words_list.index(x)] == i]
+        #for k in range(len(playernumber_list)):
+        #    if playernumber_list[k] == i:
+        #        result_list[i].append(words_list[k])
+
+        
+    #return list, playernumber_list
+    #return list, playernumber_list, result_list
+    return result_list
     # END PROBLEM 10
 
 
-def match(words, times):
+def match(words, times):      # 最终本质是得到一个字典
     """A data abstraction containing all words typed and their times.
 
     Arguments:
