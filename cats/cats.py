@@ -311,22 +311,27 @@ def minimum_mewtations(typed, source, limit):
     #    # BEGIN
     #    "*** YOUR CODE HERE ***"
     #    # END
-    ## 上面给出的模板全部不看
-    #list = []     # 用一个列表来存储比较结果的大小
-########problem7 练习区域#######
-#def change(typed, source):    # 先找到相同的连续部分
-#    Start = 0        # 用来存储起始位置
-#    for i in range(len(source)):
-#        for k in range(len(typed)):
-#            if typed[k] == source[i] # ⭐️写到这里
+    if limit < 0:
+        return 1
+    elif typed == source: 
+        return 0
+    elif min(len(typed), len(source)) == 0:
+        return max(len(typed), len(source))
+    else:
+        diff = typed[0] != source[0]
+        add_diff = 1 + minimum_mewtations(typed, source[1:], limit-1)
+        remove_diff = 1 + minimum_mewtations(typed[1:], source, limit-1)
+        substitute_diff = diff + minimum_mewtations(typed[1:], source[1:], limit-diff)
+    return min(add_diff, remove_diff, substitute_diff)
+
+
 
 
     
-        
-        
 
 
 
+    
 
 def final_diff(typed, source, limit):
     """A diff function that takes in a string TYPED, a string SOURCE, and a number LIMIT.
@@ -483,7 +488,7 @@ def fastest_words(match):                                     # 这里是把函�
         
     #return list, playernumber_list
     #return list, playernumber_list, result_list
-    return result_list
+    return result_list         # PROBLEM 10 finished
     # END PROBLEM 10
 
 
