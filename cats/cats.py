@@ -318,11 +318,12 @@ def minimum_mewtations(typed, source, limit):
     elif min(len(typed), len(source)) == 0:
         return max(len(typed), len(source))
     else:
-        diff = typed[0] != source[0]
+        diff = (typed[0] != source[0])
+        #print(diff)    # only for debbug
         add_diff = 1 + minimum_mewtations(typed, source[1:], limit-1)
         remove_diff = 1 + minimum_mewtations(typed[1:], source, limit-1)
-        substitute_diff = diff + minimum_mewtations(typed[1:], source[1:], limit-diff)
-    return min(add_diff, remove_diff, substitute_diff)
+        substitute_diff = diff + minimum_mewtations(typed[1:], source[1:], limit-diff)     # 算法还是看不懂，主要是还是分步骤递归那块不理解
+    return min(add_diff, remove_diff, substitute_diff)       # Problem7 SKIP temp finish
 
 
 
