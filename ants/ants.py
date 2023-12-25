@@ -198,7 +198,12 @@ class ThrowerAnt(Ant):
         This method returns None if there is no such Bee (or none in range).
         """
         # BEGIN Problem 3 and 4
-        return random_bee(self.place.bees) # REPLACE THIS LINE
+        #return random_bee(self.place.bees) # REPLACE THIS LINE
+        #先写逻辑： 如果当前的位置没有bee，且当前位置所有前的位置没有BEE则返回，如果有，则返回random
+        if self.place.bees:
+            return random_bee(self.place.bees)
+        else:
+            return self.nearest_bee(self.entrance)
         # END Problem 3 and 4
 
     def throw_at(self, target):
@@ -787,3 +792,9 @@ class AssaultPlan(dict):
     def all_bees(self):
         """Place all Bees in the beehive and return the list of Bees."""
         return [bee for wave in self.values() for bee in wave]
+
+
+
+# PROJECT 3 CATS SKIPPED
+# CAUSE ITS EASY(JUST IMPLEMENT SOME CLASS) AND I CANT USE PYTHON OK AND I CANT USE GUI.PY(I DONT KNOW THE REASON, AND
+# CANT FIX THAT PROBLEM SO I DECIDES TO SKIP THE PROJECT. HOWEVER I WILL FIND SOME OOP TOPIC PYTHON BOOK TO PRACTISE)
