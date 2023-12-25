@@ -154,10 +154,14 @@ class Ant(Insect):
 
 class HarvesterAnt(Ant):
     """HarvesterAnt produces 1 additional food per turn for the colony."""
-
-    name = 'Harvester'
-    implemented = True
+    def __init__(self, health=1):   # ADDED bu my self
+        super().__init__(health)
+        #name = 'Harvester'
+        self.name = 'Harvester'
+    #implemented = True
+        self.implemented = True
     # OVERRIDE CLASS ATTRIBUTES HERE
+        self.food_cost = 2
 
     def action(self, gamestate):
         """Produce 1 additional food for the colony.
@@ -166,16 +170,22 @@ class HarvesterAnt(Ant):
         """
         # BEGIN Problem 1
         "*** YOUR CODE HERE ***"
+        gamestate.food += 1
         # END Problem 1
 
 
 class ThrowerAnt(Ant):
     """ThrowerAnt throws a leaf each turn at the nearest Bee in its range."""
-
-    name = 'Thrower'
-    implemented = True
-    damage = 1
+    def __init__(self, health=1):  # ADDED by my self 
+        super().__init__(health)
+    #name = 'Thrower'
+        self.name = 'Thrower'
+    #implemented = True
+        self.implemented = True
+    #damage = 1
+        self.damage = 1
     # ADD/OVERRIDE CLASS ATTRIBUTES HERE
+        self.food_cost = 3
 
     def nearest_bee(self):
         """Return the nearest Bee in a Place that is not the HIVE, connected to
