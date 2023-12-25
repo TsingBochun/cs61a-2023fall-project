@@ -13,6 +13,7 @@ class Place:
     """A Place holds insects and has an exit to another Place."""
     is_hive = False
 
+    #def __init__(self, name, exit=None):
     def __init__(self, name, exit=None):
         """Create a Place with the given NAME and EXIT.
 
@@ -27,6 +28,9 @@ class Place:
         # Phase 1: Add an entrance to the exit
         # BEGIN Problem 2
         "*** YOUR CODE HERE ***"
+        #self.entrance = entrance
+        if self.exit:     # 如果说有出口的话
+            self.exit.entrance = self
         # END Problem 2
 
     def add_insect(self, insect):
